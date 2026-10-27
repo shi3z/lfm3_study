@@ -1,0 +1,33 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________________________ test_lru_cache ________________________________
+
+    def test_lru_cache():
+        cache = LRUCache(capacity=3)
+    
+        # Test 1: get existing key
+>       cache.put("key1", "value1")
+
+test_lru.py:7: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <lru.LRUCache object at 0x7b494f263170>, key = 'key1', value = 'value1'
+
+    def put(self, key: str, value: str) -> None:
+        if key in self.cache:
+            self.cache[key] = value
+        else:
+            if len(self.cache) >= self.capacity:
+                # Evict least recently used item
+                lru, lru_key = self.tail.pop()
+                del self.cache[lru_key]
+            self.cache[key] = value
+            self.head[key] = self.head
+            self.tail[key] = self.tail
+>           self.size += 1
+E           TypeError: unsupported operand type(s) for +=: 'method' and 'int'
+
+lru.py:25: TypeError
+=========================== short test summary info ============================
+FAILED test_lru.py::test_lru_cache - TypeError: unsupported operand type(s) f...
+1 failed in 0.01s

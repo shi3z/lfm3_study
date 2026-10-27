@@ -1,0 +1,4 @@
+
+[gen] 1s in=11 out=5 text='The user says "hi'
+[gen] 6s in=22 out=600 text="We need to write a long Python tutorial about decorators with many examples. The user wants a comprehensive guide, covering basics and advanced topics. We'll structure it as a tutorial: introduction, what are decorators, syntax, simple example, nested decorators, multiple arguments, class decorators"
+[gen] 6s in=22 out=600 text='We need to write a long Python tutorial about decorators with many examples. The user wants a comprehensive guide covering the concept, syntax, usage, and multiple examples. We should structure it well: introduction, what are decorators, basic syntax, how they work (wrapping functions), using @decor'

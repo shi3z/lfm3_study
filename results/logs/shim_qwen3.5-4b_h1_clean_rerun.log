@@ -1,0 +1,5 @@
+
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[gen] 1s in=11 out=5 text='Thinking Process:\n\n1'
+[gen] 11s in=11313 out=108 text='<tool_call>\n<function=Bash>\n<parameter=command>\ncd <ROOT>/runs_hard/h1 && pytest tests/test_shop.py -v 2>&1\n</parameter>\n<parameter=description>\nRun pytest on test_shop.py to see failing tests\n</parameter>\n</function>\n</tool_call>'

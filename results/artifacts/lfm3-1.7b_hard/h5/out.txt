@@ -1,0 +1,16 @@
+⚠ claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth source is set and takes precedence over your claude.ai login · Unset it to load your organization's connectors
+Claude Code doesn't recognize the model "lfm3", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"lfm3","query_source":"sdk"}
+Done. I wrote the results to `<ROOT>/runs_hard/h5/ANSWER.txt`.
+
+**Summary of findings:**
+
+- **Environment variable name:** `APP_BUDGET_S`
+- **Default value:** `12.5` (stored as the string `"12.5"`, parsed by `float()` → 12.5 seconds)
+- **Function that reads it:** `get_request_budget()` in `app/core/settings.py` (lines 5–7)
+- **Call sites (modules/files):**
+  1. `<ROOT>/runs_hard/h5/app/api/handlers.py` — line 4 (`deadline = get_request_budget()`)
+  2. `<ROOT>/runs_hard/h5/app/api/health.py` — line 2 (`def ping(): return get_request_budget() > 0`)
+  3. `<ROOT>/runs_hard/h5/app/core/client.py` — line 1 (import) & line 3 (`for _ in range(get_retries()): pass` — that's `get_retries()`, not budget)
+
+Additional env vars found in the repo: `APP_RETRIES` (default `3`, int) and `APP_LOG` (default `"info"`, str) — but only `APP_BUDGET_S` defines the request timeout in seconds. The result file includes notes on these.

@@ -1,0 +1,33 @@
+⚠ claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth source is set and takes precedence over your claude.ai login · Unset it to load your organization's connectors
+Claude Code doesn't recognize the model "lfm3", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"lfm3","query_source":"sdk"}
+All tests pass — **7/7**. Here's a summary of the bugs found and fixed in the `shop/` package:
+
+## Root causes
+
+### 1. `apply_discount` discount percentage (bug → wrong math)
+```python
+# Before (wrong): price * (1 - pct / 10)
+# After:          price * (1 - pct / 100)
+```
+`pct=10` meant 10% off, but the division by 10 made it 1% off. Changed to `/100`.
+
+### 2. `Inventory.reserve` over-reservation check (bug → false positive OutOfStock)
+```python
+# Before: if self.stock.get(sku, 0) < qty - 1:
+# After:  if self.stock.get(sku, 0) < qty:
+```
+Required `qty` units must be available. Previously it required `qty-1`, allowing one extra unit to be taken when only 1 was left.
+
+### 3. Shared mutable default `items={}` in `Cart.__init__`
+Default argument `items={}` is evaluated once at function definition time, so all `Cart` instances shared the same dict. Now defaults to `None` and creates a fresh `{}` per instance.
+
+### 4. `Cart.remove` left entry at quantity 0
+When removing all of an item's quantity, the key stayed in `items` with `(p, 0)`. Added `del self.items[sku]` when `q == 0`.
+
+## Files modified
+- `shop/cart.py` — fixed `apply_discount`, `Cart.__init__`, `remove`, `total`
+- `shop/inventory.py` — fixed `reserve` threshold & `release`
+- `shop/pricing.py` — fixed `apply_discount` percentage
+
+Tests were not touched. Memory recorded at `memory/test_shop_fix.md` and indexed in `MEMORY.md`.

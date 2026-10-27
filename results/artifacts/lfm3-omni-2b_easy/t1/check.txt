@@ -1,0 +1,14 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________________________________ test_lifo ___________________________________
+
+    def test_lifo():
+>       s=Stack(); s.push(1); s.push(2); assert s.pop()==2 and s.peek()==1
+E       assert (1 == 2)
+E        +  where 1 = <bound method Stack.pop of <stack.Stack object at 0x7788a1fb99d0>>()
+E        +    where <bound method Stack.pop of <stack.Stack object at 0x7788a1fb99d0>> = <stack.Stack object at 0x7788a1fb99d0>.pop
+
+test_stack.py:3: AssertionError
+=========================== short test summary info ============================
+FAILED test_stack.py::test_lifo - assert (1 == 2)
+1 failed in 0.01s

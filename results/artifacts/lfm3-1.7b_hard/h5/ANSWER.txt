@@ -1,0 +1,17 @@
+Request timeout (seconds) environment variable found in this repository:
+
+--- Entry ---
+Environment Variable Name: APP_BUDGET_S
+Default Value: 12.5
+
+--- Function that reads it ---
+Function Name: get_request_budget()
+
+--- File paths of modules that call get_request_budget() ---
+1. <ROOT>/runs_hard/h5/app/api/handlers.py (line 4: `deadline = get_request_budget()`)
+2. <ROOT>/runs_hard/h5/app/api/health.py (line 2: `def ping(): return get_request_budget() > 0`)
+
+Notes:
+- `get_request_budget()` lives in <ROOT>/runs_hard/h5/app/core/settings.py (lines 5-7). Its docstring states: "Seconds allowed per request; env APP_BUDGET_S, default 12.5."
+- The default value is the string "12.5" passed to float(), resolving to 12.5 seconds when the env var is unset.
+- No other env var in the repo defines a request timeout in seconds (APP_RETRIES defaults to 3 for retry count; APP_LOG defaults to "info" for log level).

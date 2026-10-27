@@ -1,0 +1,64 @@
+.FFF.F.                                                                  [100%]
+=================================== FAILURES ===================================
+__________________________________ test_order __________________________________
+
+>   def test_order(): assert top_words("b a b a c",n=10)==[("a",2),("b",2),("c",1)]
+E   AssertionError: assert [('b', 2), ('a', 2), ('c', 1)] == [('a', 2), ('b', 2), ('c', 1)]
+E     At index 0 diff: ('b', 2) != ('a', 2)
+E     Use -v to get more diff
+
+test_wf.py:5: AssertionError
+__________________________________ test_stop ___________________________________
+
+>   def test_stop(): assert top_words(T,n=3,stopwords={"the","and","a"})==[("cat",2),("dog",2),("bird",1)]
+E   TypeError: top_words() got an unexpected keyword argument 'stopwords'
+
+test_wf.py:6: TypeError
+_________________________________ test_minlen __________________________________
+
+>   def test_minlen(): assert top_words(T,n=10,min_length=4)==[("bird",1)]
+E   TypeError: top_words() got an unexpected keyword argument 'min_length'
+
+test_wf.py:7: TypeError
+___________________________________ test_cli ___________________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-shi3z/pytest-2/test_cli0')
+
+    def test_cli(tmp_path):
+        f=tmp_path/"t.txt"; f.write_text(T)
+        r=subprocess.run([sys.executable,"wordfreq.py",str(f),"--top","2","--stopwords","the,and,a","--json"],capture_output=True,text=True)
+>       assert r.returncode==0 and json.loads(r.stdout)==[["cat",2],["dog",2]]
+
+test_wf.py:12: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<conda>/lib/python3.12/json/__init__.py:346: in loads
+    return _default_decoder.decode(s)
+<conda>/lib/python3.12/json/decoder.py:337: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x71bc9eb13e60>
+s = 'the\t3\ncat\t2\nand\t2\ndog\t2\na\t2\nbird\t1\n', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+<conda>/lib/python3.12/json/decoder.py:355: JSONDecodeError
+=========================== short test summary info ============================
+FAILED test_wf.py::test_order - AssertionError: assert [('b', 2), ('a', 2), (...
+FAILED test_wf.py::test_stop - TypeError: top_words() got an unexpected keywo...
+FAILED test_wf.py::test_minlen - TypeError: top_words() got an unexpected key...
+FAILED test_wf.py::test_cli - json.decoder.JSONDecodeError: Expecting value: ...
+4 failed, 3 passed in 0.07s

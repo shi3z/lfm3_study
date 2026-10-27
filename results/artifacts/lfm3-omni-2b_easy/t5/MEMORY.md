@@ -1,0 +1,2 @@
+- [parse.py](parse.py) — Updated parse_kv to strip surrounding whitespace from keys and values
+- [test_parse.py](test_parse.py) — Added pytest tests covering basic, spaces, empty, and trailing cases

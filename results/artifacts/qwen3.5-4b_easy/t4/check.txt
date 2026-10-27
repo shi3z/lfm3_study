@@ -1,0 +1,12 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________________________________ test_lru ___________________________________
+
+    def test_lru():
+>       c=LRUCache(2); c.put(1,1); c.put(2,2); assert c.get(1)==1
+E       TypeError: LRUCache() takes no arguments
+
+test_lru.py:3: TypeError
+=========================== short test summary info ============================
+FAILED test_lru.py::test_lru - TypeError: LRUCache() takes no arguments
+1 failed in 0.01s

@@ -1,0 +1,32 @@
+⚠ claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth source is set and takes precedence over your claude.ai login · Unset it to load your organization's connectors
+Claude Code doesn't recognize the model "lfm3", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"lfm3","query_source":"sdk"}
+All tests pass. Here's a summary of the implementation:
+
+## Implementation Summary
+
+**`deps.py`** - `resolve(graph)` function:
+- Takes a graph where keys are nodes and values are lists of dependencies
+- Returns nodes in topological order (dependencies come first)
+- Uses Kahn's algorithm with alphabetical ordering for ties
+- Includes all nodes (both keys and dependency values)
+- Raises `CycleError(cycle=[...])` when a cycle is detected
+
+**Key features:**
+1. **Topological sort**: Dependencies are placed before dependents
+2. **Alphabetical ordering**: When multiple nodes can be at the same level, they're sorted alphabetically
+3. **Cycle detection**: Uses DFS to find cycles, including self-loops
+4. **All nodes included**: Nodes that only appear as keys (not in any dependency list) are also included in the result
+
+**Test coverage** (`test_deps.py`):
+- Simple dependency chain
+- Multiple dependencies per node
+- Self-loop cycle detection
+- Complex multi-node cycles
+- Nodes not in dependency lists
+- Empty graph
+- Single node with no dependencies
+- Multiple dependency levels
+- Cycles with additional dependent nodes
+- Alphabetical ordering verification
+- Disconnected components

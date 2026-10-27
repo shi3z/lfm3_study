@@ -1,0 +1,19 @@
+⚠ claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth source is set and takes precedence over your claude.ai login · Unset it to load your organization's connectors
+Claude Code doesn't recognize the model "lfm3", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"lfm3","query_source":"sdk"}
+Fixed and verified. Here's what was wrong in `stack.py`:
+
+- **`pop()`** used `self.items.pop(0)` — removing from the front of the list (FIFO). A stack needs LIFO, so it should pop the last element: `self.items.pop()`.
+- **`peek()`** returned `self.items[0]` — the bottom of the list. Should return the top: `self.items[-1]`.
+
+**Change:**
+```diff
+-    def pop(self): return self.items.pop(0)
++    def pop(self): return self.items.pop()
+-    def peek(self): return self.items[0]
++    def peek(self): return self.items[-1]
+```
+
+**Verification:** `pytest test_stack.py -v` → `test_stack.py::test_lifo PASSED` (1 passed).
+
+Note: `out.txt` contained unrelated Claude Code config warnings, not part of the failing test.

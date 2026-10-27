@@ -1,0 +1,23 @@
+⚠ claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth source is set and takes precedence over your claude.ai login · Unset it to load your organization's connectors
+Claude Code doesn't recognize the model "lfm3", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"lfm3","query_source":"sdk"}
+Done. Renamed `calc_total` → `compute_sum` in all three places:
+
+- **`pkg/util.py`**: `def calc_total(xs): return sum(xs)` → `def compute_sum(xs): return sum(xs)`
+- **`main.py`**: import and usage updated (`from pkg.util import calc_total` → `from pkg.util import compute_sum`, `return calc_total([4])` → `return compute_sum([4])`)
+- **`other.py`**: import and usage updated (`from pkg.util import calc_total` → `from pkg.util import compute_sum`, `calc_total([1,2,3])` → `compute_sum([1,2,3])`)
+
+All occurrences replaced globally within each file. Verified contents:
+
+```
+pkg/util.py:
+  def compute_sum(xs): return sum(xs)
+
+other.py:
+  from pkg.util import compute_sum
+  print(compute_sum([1,2,3]))
+
+main.py:
+  from pkg.util import compute_sum
+  def f(): return compute_sum([4])
+```

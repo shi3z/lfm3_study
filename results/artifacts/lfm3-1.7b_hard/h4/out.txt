@@ -1,0 +1,37 @@
+⚠ claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth source is set and takes precedence over your claude.ai login · Unset it to load your organization's connectors
+Claude Code doesn't recognize the model "lfm3", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"lfm3","query_source":"sdk"}
+Done. Here's what I implemented and verified:
+
+## Changes to `<ROOT>/runs_hard/h4/deps.py`
+
+**`resolve(graph)`** — returns a topological ordering where each node's dependencies (values in `graph[node]`) appear before the node itself. Key behaviors:
+
+- **Nodes only as dependencies** (not keys) are collected and included (e.g., `'b'` in `{'a': ['b'], 'b': []}`).
+- **Alphabetical tie-break**: at each Kahn step, the queue of zero-indegree candidates is sorted; newly-zeroed nodes are inserted in sorted position. Verified with the diamond case.
+- **Cycle detection**: `_find_cycle()` DFS finds cycles; `resolve()` raises `CycleError(cycle=[...])` on any cycle, including self-loops (`{'a': ['a']}` → `['a']`).
+- **`CycleError`** class preserved from the stub.
+
+## Test suite (all 7 pass)
+
+Created in `tests/`:
+- `test_deps.py` — 7 test functions covering:
+  - Basic linear order
+  - Diamond graph (smallest-first tie-break)
+  - Self-loop cycle
+  - Mutual cycle
+  - Single node, no-cycle
+  - Entire graph cycle
+  - Undocumented dependency nodes
+  - Multiple zero-indegree candidates
+- `run_tests.py` — runner that asserts each function passes.
+- Ran via `tests/venv/bin/python tests/run_tests.py` → **ALL PASS**.
+
+## Files written
+- `deps.py` (updated)
+- `tests/test_deps.py`
+- `tests/run_tests.py`
+- `tests/venv/` (Python 3.12.7 venv with `pytest`)
+- `.claude/projects/.../memory/README.md` and `MEMORY.md` for persistence
+
+Note: the original `deps.py` only had `CycleError` and `resolve` stub raising `NotImplementedError`; I filled in the full implementation.

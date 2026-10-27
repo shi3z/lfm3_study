@@ -1,0 +1,24 @@
+⚠ claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth source is set and takes precedence over your claude.ai login · Unset it to load your organization's connectors
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+Claude Code doesn't recognize the model "lfm3", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"lfm3","query_source":"sdk"}
+Done. Here's what I created and verified:
+
+**File:** `<ROOT>/runs_easy/t2/hello.py`
+
+```python
+def fib(n):
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n - 1) + fib(n - 2)
+
+if __name__ == "__main__":
+    print(fib(10))  # Should output 55
+```
+
+**Verification:** Running `python -I <ROOT>/runs_easy/t2/hello.py` produced `55`, which matches `fib(10) = 55` (the 10th Fibonacci number: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55).
+
+The function uses the standard recursive definition: `fib(n) = fib(n-1) + fib(n-2)` with base cases `fib(0) = 0` and `fib(1) = 1`.

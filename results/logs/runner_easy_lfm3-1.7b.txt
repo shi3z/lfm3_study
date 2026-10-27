@@ -1,0 +1,5 @@
+t1 PASS 43s
+t2 PASS 16s
+t3 PASS 40s
+t4 PASS 32s
+t5 PASS 35s

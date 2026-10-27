@@ -1,0 +1,54 @@
+F..FFFF                                                                  [100%]
+=================================== FAILURES ===================================
+________________________________ test_discount _________________________________
+
+>   def test_discount(): assert apply_discount(200, 10) == 180.0
+E   assert 0.0 == 180.0
+E    +  where 0.0 = apply_discount(200, 10)
+
+tests/test_shop.py:5: AssertionError
+______________________________ test_reserve_over _______________________________
+
+    def test_reserve_over():
+        inv = Inventory({"a": 2})
+>       with pytest.raises(OutOfStock): inv.reserve("a", 3)
+E       Failed: DID NOT RAISE <class 'shop.inventory.OutOfStock'>
+
+tests/test_shop.py:11: Failed
+____________________________ test_carts_independent ____________________________
+
+    def test_carts_independent():
+        inv = Inventory({"a": 9}); c1 = Cart(inv); c2 = Cart(inv)
+>       c1.add("a", 10); assert c2.items == {}
+E       AssertionError: assert {'a': (10, 1)} == {}
+E         Left contains 1 more item:
+E         {'a': (10, 1)}
+E         Use -v to get more diff
+
+tests/test_shop.py:14: AssertionError
+_____________________________ test_remove_to_zero ______________________________
+
+    def test_remove_to_zero():
+        inv = Inventory({"a": 5}); c = Cart(inv); c.add("a", 10, 2); c.remove("a", 2)
+>       assert "a" not in c.items and inv.stock["a"] == 5
+E       AssertionError: assert ('a' not in {'a': (10, 1)})
+E        +  where {'a': (10, 1)} = <shop.cart.Cart object at 0x76edba5a7590>.items
+
+tests/test_shop.py:17: AssertionError
+__________________________________ test_total __________________________________
+
+    def test_total():
+        inv = Inventory({"a": 9}); c = Cart(inv); c.add("a", 50, 2)
+>       assert c.total(discount_pct=10) == 97.2
+E       assert 0.0 == 97.2
+E        +  where 0.0 = <bound method Cart.total of <shop.cart.Cart object at 0x76edba5a7ec0>>(discount_pct=10)
+E        +    where <bound method Cart.total of <shop.cart.Cart object at 0x76edba5a7ec0>> = <shop.cart.Cart object at 0x76edba5a7ec0>.total
+
+tests/test_shop.py:20: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_shop.py::test_discount - assert 0.0 == 180.0
+FAILED tests/test_shop.py::test_reserve_over - Failed: DID NOT RAISE <class '...
+FAILED tests/test_shop.py::test_carts_independent - AssertionError: assert {'...
+FAILED tests/test_shop.py::test_remove_to_zero - AssertionError: assert ('a' ...
+FAILED tests/test_shop.py::test_total - assert 0.0 == 97.2
+5 failed, 2 passed in 0.01s

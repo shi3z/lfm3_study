@@ -1,0 +1,111 @@
+FFFFFFF                                                                  [100%]
+=================================== FAILURES ===================================
+__________________________________ test_basic __________________________________
+
+>   def test_basic(): assert resolve({"a":["b","c"],"b":["c"],"c":[]})==["c","b","a"]
+
+test_deps.py:3: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+graph = {'a': ['b', 'c'], 'b': ['c'], 'c': []}
+
+    def resolve(graph):
+>       raise NotImplementedError
+E       NotImplementedError
+
+deps.py:7: NotImplementedError
+_____________________________ test_alpha_tiebreak ______________________________
+
+>   def test_alpha_tiebreak(): assert resolve({"x":[],"a":[],"m":["x"]})==["a","x","m"]
+
+test_deps.py:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+graph = {'a': [], 'm': ['x'], 'x': []}
+
+    def resolve(graph):
+>       raise NotImplementedError
+E       NotImplementedError
+
+deps.py:7: NotImplementedError
+_____________________________ test_implicit_nodes ______________________________
+
+>   def test_implicit_nodes(): assert resolve({"a":["z"]})==["z","a"]
+
+test_deps.py:5: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+graph = {'a': ['z']}
+
+    def resolve(graph):
+>       raise NotImplementedError
+E       NotImplementedError
+
+deps.py:7: NotImplementedError
+__________________________________ test_empty __________________________________
+
+>   def test_empty(): assert resolve({})==[]
+
+test_deps.py:6: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+graph = {}
+
+    def resolve(graph):
+>       raise NotImplementedError
+E       NotImplementedError
+
+deps.py:7: NotImplementedError
+__________________________________ test_cycle __________________________________
+
+    def test_cycle():
+>       with pytest.raises(CycleError) as e: resolve({"a":["b"],"b":["c"],"c":["a"]})
+
+test_deps.py:8: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+graph = {'a': ['b'], 'b': ['c'], 'c': ['a']}
+
+    def resolve(graph):
+>       raise NotImplementedError
+E       NotImplementedError
+
+deps.py:7: NotImplementedError
+__________________________________ test_self ___________________________________
+
+    def test_self():
+>       with pytest.raises(CycleError): resolve({"a":["a"]})
+
+test_deps.py:11: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+graph = {'a': ['a']}
+
+    def resolve(graph):
+>       raise NotImplementedError
+E       NotImplementedError
+
+deps.py:7: NotImplementedError
+_________________________________ test_diamond _________________________________
+
+>   def test_diamond(): assert resolve({"d":["b","c"],"b":["a"],"c":["a"],"a":[]})==["a","b","c","d"]
+
+test_deps.py:12: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+graph = {'a': [], 'b': ['a'], 'c': ['a'], 'd': ['b', 'c']}
+
+    def resolve(graph):
+>       raise NotImplementedError
+E       NotImplementedError
+
+deps.py:7: NotImplementedError
+=========================== short test summary info ============================
+FAILED test_deps.py::test_basic - NotImplementedError
+FAILED test_deps.py::test_alpha_tiebreak - NotImplementedError
+FAILED test_deps.py::test_implicit_nodes - NotImplementedError
+FAILED test_deps.py::test_empty - NotImplementedError
+FAILED test_deps.py::test_cycle - NotImplementedError
+FAILED test_deps.py::test_self - NotImplementedError
+FAILED test_deps.py::test_diamond - NotImplementedError
+7 failed in 0.02s

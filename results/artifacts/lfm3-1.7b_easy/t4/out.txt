@@ -1,0 +1,19 @@
+⚠ claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth source is set and takes precedence over your claude.ai login · Unset it to load your organization's connectors
+Claude Code doesn't recognize the model "lfm3", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"lfm3","query_source":"sdk"}
+Done. Here's what I did:
+
+**`lru.py`** — implemented `LRUCache` using `collections.OrderedDict`:
+- `__init__(self, capacity)` stores the capacity and initializes an ordered dict.
+- `get(key)`: returns the stored value, moving the key to the end (most-recently-used position). Returns `-1` if the key is absent.
+- `put(key, value)`: updates/insertion; if the cache exceeds `capacity`, pops the least-recently-used item (`popitem(last=False)`).
+
+**`test_lru.py`** — extended the original test to cover the full sequence:
+- After putting 1, 2 (capacity 2), `get(1)` → 1 ✓
+- Adding 3 evicts 1 → `get(2)` → -1 ✓
+- Adding 4 evicts 2 → `get(1)` → -1, `get(3)` → 3, `get(4)` → 4 ✓
+- Updating 3 to 30 → `get(3)` → 30 ✓
+
+**Result**: `python3 test_lru.py` → `All tests passed`.
+
+Note: the original `lru.py` had a `TODO` stub, and `test_lru.py` imported `lru` directly from the local directory (which wasn't installed), so I added the `sys.path.insert` guard and wrote both files fresh.

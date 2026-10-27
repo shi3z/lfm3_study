@@ -1,0 +1,21 @@
+⚠ claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth source is set and takes precedence over your claude.ai login · Unset it to load your organization's connectors
+Claude Code doesn't recognize the model "lfm3", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"lfm3","query_source":"sdk"}
+All tests passed. The `wordfreq.py` has been successfully extended with:
+
+1. **`top_words(text, n=10, stopwords=None, min_length=1)`** function:
+   - Excludes stopwords (provided as a `set`)
+   - Excludes words shorter than `min_length`
+   - Returns words sorted alphabetically (by word, not by count)
+
+2. **CLI flags**:
+   - `--top N`: Limit number of top words
+   - `--stopwords a,b,c`: Comma-separated list of stopwords to exclude
+   - `--min-length K`: Minimum word length
+   - `--json`: Output as `[[word,count],...]` JSON format
+
+**Test results:**
+- Basic usage: Shows word frequencies in `word\tcount` format
+- With filters: `--stopwords hello,world --min-length 3` filters out "hello" and "world" and words shorter than 3 characters
+- With `--json`: Outputs JSON array format `[[word,count],...]`
+- Combined: All options work together correctly

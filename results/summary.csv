@@ -1,0 +1,26 @@
+suite,task,model,result,wall_seconds,note
+easy,t1,LFM3-1.7B,PASS,43,
+easy,t2,LFM3-1.7B,PASS,16,
+easy,t3,LFM3-1.7B,PASS,40,
+easy,t4,LFM3-1.7B,PASS,32,
+easy,t5,LFM3-1.7B,PASS,35,
+easy,t1,Qwen3.5-4B,PASS,400,killed by 400s timeout; files already correct at kill time
+easy,t2,Qwen3.5-4B,FAIL,400,timeout; hello.py never created
+easy,t3,Qwen3.5-4B,FAIL,400,timeout; main.py left half-edited (imports calc_total but calls compute_sum)
+easy,t4,Qwen3.5-4B,FAIL,400,timeout; lru.py still the empty stub
+easy,t5,Qwen3.5-4B,PASS,400,killed by 400s timeout; files already correct at kill time
+easy,t1,LFM3-Omni-2B,FAIL,18,first harness; greedy; non-reasoning
+easy,t2,LFM3-Omni-2B,PASS,10,first harness
+easy,t3,LFM3-Omni-2B,FAIL,11,first harness
+easy,t4,LFM3-Omni-2B,FAIL,32,first harness
+easy,t5,LFM3-Omni-2B,FAIL,24,first harness
+hard,h1,LFM3-1.7B,PASS,351,
+hard,h2,LFM3-1.7B,FAIL,282,no file written
+hard,h3,LFM3-1.7B,PASS,154,
+hard,h4,LFM3-1.7B,PASS,258,
+hard,h5,LFM3-1.7B,PASS,309,
+hard,h1,Qwen3.5-4B,FAIL,900,timeout (also FAIL 900s on a clean rerun)
+hard,h2,Qwen3.5-4B,FAIL,303,no tool calls; claimed success; expr.py untouched
+hard,h3,Qwen3.5-4B,FAIL,502,claimed success; signature not changed
+hard,h4,Qwen3.5-4B,FAIL,195,claimed success; deps.py untouched
+hard,h5,Qwen3.5-4B,FAIL,900,timeout; ANSWER.txt not created

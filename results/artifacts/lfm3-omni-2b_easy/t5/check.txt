@@ -1,0 +1,36 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+__________________________________ test_basic __________________________________
+
+    def test_basic():
+>       assert parse_kv("a=1,b=2") == {"a": 1, "b": 2}
+E       NameError: name 'parse_kv' is not defined
+
+test_parse.py:7: NameError
+_________________________________ test_spaces __________________________________
+
+    def test_spaces():
+>       from parse import parse_kv
+E       ImportError: cannot import name 'parse_kv' from 'parse' (<ROOT>/runs_easy/t5/parse.py)
+
+test_parse.py:10: ImportError
+__________________________________ test_empty __________________________________
+
+    def test_empty():
+>       assert parse_kv("") == {}
+E       NameError: name 'parse_kv' is not defined
+
+test_parse.py:14: NameError
+________________________________ test_trailing _________________________________
+
+    def test_trailing():
+>       assert parse_kv("a=1,") == {"a": 1}
+E       NameError: name 'parse_kv' is not defined
+
+test_parse.py:17: NameError
+=========================== short test summary info ============================
+FAILED test_parse.py::test_basic - NameError: name 'parse_kv' is not defined
+FAILED test_parse.py::test_spaces - ImportError: cannot import name 'parse_kv...
+FAILED test_parse.py::test_empty - NameError: name 'parse_kv' is not defined
+FAILED test_parse.py::test_trailing - NameError: name 'parse_kv' is not defined
+4 failed in 0.02s

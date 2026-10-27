@@ -1,0 +1,35 @@
+⚠ claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth source is set and takes precedence over your claude.ai login · Unset it to load your organization's connectors
+Claude Code doesn't recognize the model "lfm3", so it assumes a context window of 200k tokens. Update Claude Code, or see https://code.claude.com/docs/en/model-config#correct-the-window-for-a-gateway-or-custom-model-id to set the window.
+[claude-code:unrecognized_model] {"model":"lfm3","query_source":"sdk"}
+All 4 tests pass. Here's what was fixed in `parse_kv`:
+
+**Original:**
+```python
+def parse_kv(s):
+    out={}
+    for part in s.split(','):
+        k,v=part.split('=')
+        out[k]=int(v)
+    return out
+```
+
+**Fixed:**
+```python
+def parse_kv(s):
+    out={}
+    for part in s.split(','):
+        part = part.strip()
+        if not part:
+            continue
+        k, v = part.split('=', 1)
+        out[k.strip()] = int(v.strip())
+    return out
+```
+
+Changes:
+- Stripped whitespace from each `part` before processing (handles `" a = 1 "`).
+- Skips empty parts caused by trailing commas or consecutive commas.
+- Splits on `=` with `maxsplit=1` so values containing `=` are preserved.
+- Strips whitespace from key and value before converting to `int`.
+
+This makes `test_parse.py` fully green: `test_basic`, `test_spaces`, `test_empty`, `test_trailing` — **4 passed**.

@@ -1,0 +1,452 @@
+FFFFFFFFFFFFFFFFFFFFFF                                                   [100%]
+=================================== FAILURES ===================================
+_______________________________ test_ok[1+2*3-7] _______________________________
+
+s = '1+2*3', v = 7
+
+    @pytest.mark.parametrize("s,v",[("1+2*3",7),("(1+2)*3",9),("2^3^2",512),("-3+5",2),("--3",3),("2*-3",-6),("10/4",2.5),("1 - 2 - 3",-4),("2*(3+(4-1))",12),("  7 ",7),("1.5+2.5",4),("-(2+3)",-5),("2^-1",0.5),("8/2/2",2)])
+>   def test_ok(s,v): assert evaluate(s)==pytest.approx(v)
+
+test_expr.py:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '1+2*3'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+______________________________ test_ok[(1+2)*3-9] ______________________________
+
+s = '(1+2)*3', v = 9
+
+    @pytest.mark.parametrize("s,v",[("1+2*3",7),("(1+2)*3",9),("2^3^2",512),("-3+5",2),("--3",3),("2*-3",-6),("10/4",2.5),("1 - 2 - 3",-4),("2*(3+(4-1))",12),("  7 ",7),("1.5+2.5",4),("-(2+3)",-5),("2^-1",0.5),("8/2/2",2)])
+>   def test_ok(s,v): assert evaluate(s)==pytest.approx(v)
+
+test_expr.py:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '(1+2)*3'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+______________________________ test_ok[2^3^2-512] ______________________________
+
+s = '2^3^2', v = 512
+
+    @pytest.mark.parametrize("s,v",[("1+2*3",7),("(1+2)*3",9),("2^3^2",512),("-3+5",2),("--3",3),("2*-3",-6),("10/4",2.5),("1 - 2 - 3",-4),("2*(3+(4-1))",12),("  7 ",7),("1.5+2.5",4),("-(2+3)",-5),("2^-1",0.5),("8/2/2",2)])
+>   def test_ok(s,v): assert evaluate(s)==pytest.approx(v)
+
+test_expr.py:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '2^3^2'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+_______________________________ test_ok[-3+5-2] ________________________________
+
+s = '-3+5', v = 2
+
+    @pytest.mark.parametrize("s,v",[("1+2*3",7),("(1+2)*3",9),("2^3^2",512),("-3+5",2),("--3",3),("2*-3",-6),("10/4",2.5),("1 - 2 - 3",-4),("2*(3+(4-1))",12),("  7 ",7),("1.5+2.5",4),("-(2+3)",-5),("2^-1",0.5),("8/2/2",2)])
+>   def test_ok(s,v): assert evaluate(s)==pytest.approx(v)
+
+test_expr.py:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '-3+5'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+________________________________ test_ok[--3-3] ________________________________
+
+s = '--3', v = 3
+
+    @pytest.mark.parametrize("s,v",[("1+2*3",7),("(1+2)*3",9),("2^3^2",512),("-3+5",2),("--3",3),("2*-3",-6),("10/4",2.5),("1 - 2 - 3",-4),("2*(3+(4-1))",12),("  7 ",7),("1.5+2.5",4),("-(2+3)",-5),("2^-1",0.5),("8/2/2",2)])
+>   def test_ok(s,v): assert evaluate(s)==pytest.approx(v)
+
+test_expr.py:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '--3'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+_______________________________ test_ok[2*-3--6] _______________________________
+
+s = '2*-3', v = -6
+
+    @pytest.mark.parametrize("s,v",[("1+2*3",7),("(1+2)*3",9),("2^3^2",512),("-3+5",2),("--3",3),("2*-3",-6),("10/4",2.5),("1 - 2 - 3",-4),("2*(3+(4-1))",12),("  7 ",7),("1.5+2.5",4),("-(2+3)",-5),("2^-1",0.5),("8/2/2",2)])
+>   def test_ok(s,v): assert evaluate(s)==pytest.approx(v)
+
+test_expr.py:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '2*-3'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+______________________________ test_ok[10/4-2.5] _______________________________
+
+s = '10/4', v = 2.5
+
+    @pytest.mark.parametrize("s,v",[("1+2*3",7),("(1+2)*3",9),("2^3^2",512),("-3+5",2),("--3",3),("2*-3",-6),("10/4",2.5),("1 - 2 - 3",-4),("2*(3+(4-1))",12),("  7 ",7),("1.5+2.5",4),("-(2+3)",-5),("2^-1",0.5),("8/2/2",2)])
+>   def test_ok(s,v): assert evaluate(s)==pytest.approx(v)
+
+test_expr.py:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '10/4'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+____________________________ test_ok[1 - 2 - 3--4] _____________________________
+
+s = '1 - 2 - 3', v = -4
+
+    @pytest.mark.parametrize("s,v",[("1+2*3",7),("(1+2)*3",9),("2^3^2",512),("-3+5",2),("--3",3),("2*-3",-6),("10/4",2.5),("1 - 2 - 3",-4),("2*(3+(4-1))",12),("  7 ",7),("1.5+2.5",4),("-(2+3)",-5),("2^-1",0.5),("8/2/2",2)])
+>   def test_ok(s,v): assert evaluate(s)==pytest.approx(v)
+
+test_expr.py:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '1 - 2 - 3'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+___________________________ test_ok[2*(3+(4-1))-12] ____________________________
+
+s = '2*(3+(4-1))', v = 12
+
+    @pytest.mark.parametrize("s,v",[("1+2*3",7),("(1+2)*3",9),("2^3^2",512),("-3+5",2),("--3",3),("2*-3",-6),("10/4",2.5),("1 - 2 - 3",-4),("2*(3+(4-1))",12),("  7 ",7),("1.5+2.5",4),("-(2+3)",-5),("2^-1",0.5),("8/2/2",2)])
+>   def test_ok(s,v): assert evaluate(s)==pytest.approx(v)
+
+test_expr.py:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '2*(3+(4-1))'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+_______________________________ test_ok[  7 -7] ________________________________
+
+s = '  7 ', v = 7
+
+    @pytest.mark.parametrize("s,v",[("1+2*3",7),("(1+2)*3",9),("2^3^2",512),("-3+5",2),("--3",3),("2*-3",-6),("10/4",2.5),("1 - 2 - 3",-4),("2*(3+(4-1))",12),("  7 ",7),("1.5+2.5",4),("-(2+3)",-5),("2^-1",0.5),("8/2/2",2)])
+>   def test_ok(s,v): assert evaluate(s)==pytest.approx(v)
+
+test_expr.py:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '  7 '
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+______________________________ test_ok[1.5+2.5-4] ______________________________
+
+s = '1.5+2.5', v = 4
+
+    @pytest.mark.parametrize("s,v",[("1+2*3",7),("(1+2)*3",9),("2^3^2",512),("-3+5",2),("--3",3),("2*-3",-6),("10/4",2.5),("1 - 2 - 3",-4),("2*(3+(4-1))",12),("  7 ",7),("1.5+2.5",4),("-(2+3)",-5),("2^-1",0.5),("8/2/2",2)])
+>   def test_ok(s,v): assert evaluate(s)==pytest.approx(v)
+
+test_expr.py:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '1.5+2.5'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+______________________________ test_ok[-(2+3)--5] ______________________________
+
+s = '-(2+3)', v = -5
+
+    @pytest.mark.parametrize("s,v",[("1+2*3",7),("(1+2)*3",9),("2^3^2",512),("-3+5",2),("--3",3),("2*-3",-6),("10/4",2.5),("1 - 2 - 3",-4),("2*(3+(4-1))",12),("  7 ",7),("1.5+2.5",4),("-(2+3)",-5),("2^-1",0.5),("8/2/2",2)])
+>   def test_ok(s,v): assert evaluate(s)==pytest.approx(v)
+
+test_expr.py:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '-(2+3)'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+______________________________ test_ok[2^-1-0.5] _______________________________
+
+s = '2^-1', v = 0.5
+
+    @pytest.mark.parametrize("s,v",[("1+2*3",7),("(1+2)*3",9),("2^3^2",512),("-3+5",2),("--3",3),("2*-3",-6),("10/4",2.5),("1 - 2 - 3",-4),("2*(3+(4-1))",12),("  7 ",7),("1.5+2.5",4),("-(2+3)",-5),("2^-1",0.5),("8/2/2",2)])
+>   def test_ok(s,v): assert evaluate(s)==pytest.approx(v)
+
+test_expr.py:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '2^-1'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+_______________________________ test_ok[8/2/2-2] _______________________________
+
+s = '8/2/2', v = 2
+
+    @pytest.mark.parametrize("s,v",[("1+2*3",7),("(1+2)*3",9),("2^3^2",512),("-3+5",2),("--3",3),("2*-3",-6),("10/4",2.5),("1 - 2 - 3",-4),("2*(3+(4-1))",12),("  7 ",7),("1.5+2.5",4),("-(2+3)",-5),("2^-1",0.5),("8/2/2",2)])
+>   def test_ok(s,v): assert evaluate(s)==pytest.approx(v)
+
+test_expr.py:4: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '8/2/2'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+__________________________________ test_err[] __________________________________
+
+s = ''
+
+    @pytest.mark.parametrize("s",["","1+","(1+2","1+2)","*3","1 2","a+1","1/0"])
+    def test_err(s):
+>       with pytest.raises(ValueError): evaluate(s)
+
+test_expr.py:7: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = ''
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+_________________________________ test_err[1+] _________________________________
+
+s = '1+'
+
+    @pytest.mark.parametrize("s",["","1+","(1+2","1+2)","*3","1 2","a+1","1/0"])
+    def test_err(s):
+>       with pytest.raises(ValueError): evaluate(s)
+
+test_expr.py:7: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '1+'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+________________________________ test_err[(1+2] ________________________________
+
+s = '(1+2'
+
+    @pytest.mark.parametrize("s",["","1+","(1+2","1+2)","*3","1 2","a+1","1/0"])
+    def test_err(s):
+>       with pytest.raises(ValueError): evaluate(s)
+
+test_expr.py:7: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '(1+2'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+________________________________ test_err[1+2)] ________________________________
+
+s = '1+2)'
+
+    @pytest.mark.parametrize("s",["","1+","(1+2","1+2)","*3","1 2","a+1","1/0"])
+    def test_err(s):
+>       with pytest.raises(ValueError): evaluate(s)
+
+test_expr.py:7: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '1+2)'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+_________________________________ test_err[*3] _________________________________
+
+s = '*3'
+
+    @pytest.mark.parametrize("s",["","1+","(1+2","1+2)","*3","1 2","a+1","1/0"])
+    def test_err(s):
+>       with pytest.raises(ValueError): evaluate(s)
+
+test_expr.py:7: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '*3'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+________________________________ test_err[1 2] _________________________________
+
+s = '1 2'
+
+    @pytest.mark.parametrize("s",["","1+","(1+2","1+2)","*3","1 2","a+1","1/0"])
+    def test_err(s):
+>       with pytest.raises(ValueError): evaluate(s)
+
+test_expr.py:7: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '1 2'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+________________________________ test_err[a+1] _________________________________
+
+s = 'a+1'
+
+    @pytest.mark.parametrize("s",["","1+","(1+2","1+2)","*3","1 2","a+1","1/0"])
+    def test_err(s):
+>       with pytest.raises(ValueError): evaluate(s)
+
+test_expr.py:7: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = 'a+1'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+________________________________ test_err[1/0] _________________________________
+
+s = '1/0'
+
+    @pytest.mark.parametrize("s",["","1+","(1+2","1+2)","*3","1 2","a+1","1/0"])
+    def test_err(s):
+>       with pytest.raises(ValueError): evaluate(s)
+
+test_expr.py:7: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+s = '1/0'
+
+    def evaluate(s: str) -> float:
+        """Evaluate arithmetic: + - * / ^ (right-assoc, binds tighter than unary minus on its left operand? no: standard: 2^-1=0.5), parentheses, unary minus, floats.
+        Raise ValueError on any malformed input or division by zero."""
+>       raise NotImplementedError
+E       NotImplementedError
+
+expr.py:4: NotImplementedError
+=========================== short test summary info ============================
+FAILED test_expr.py::test_ok[1+2*3-7] - NotImplementedError
+FAILED test_expr.py::test_ok[(1+2)*3-9] - NotImplementedError
+FAILED test_expr.py::test_ok[2^3^2-512] - NotImplementedError
+FAILED test_expr.py::test_ok[-3+5-2] - NotImplementedError
+FAILED test_expr.py::test_ok[--3-3] - NotImplementedError
+FAILED test_expr.py::test_ok[2*-3--6] - NotImplementedError
+FAILED test_expr.py::test_ok[10/4-2.5] - NotImplementedError
+FAILED test_expr.py::test_ok[1 - 2 - 3--4] - NotImplementedError
+FAILED test_expr.py::test_ok[2*(3+(4-1))-12] - NotImplementedError
+FAILED test_expr.py::test_ok[  7 -7] - NotImplementedError
+FAILED test_expr.py::test_ok[1.5+2.5-4] - NotImplementedError
+FAILED test_expr.py::test_ok[-(2+3)--5] - NotImplementedError
+FAILED test_expr.py::test_ok[2^-1-0.5] - NotImplementedError
+FAILED test_expr.py::test_ok[8/2/2-2] - NotImplementedError
+FAILED test_expr.py::test_err[] - NotImplementedError
+FAILED test_expr.py::test_err[1+] - NotImplementedError
+FAILED test_expr.py::test_err[(1+2] - NotImplementedError
+FAILED test_expr.py::test_err[1+2)] - NotImplementedError
+FAILED test_expr.py::test_err[*3] - NotImplementedError
+FAILED test_expr.py::test_err[1 2] - NotImplementedError
+FAILED test_expr.py::test_err[a+1] - NotImplementedError
+FAILED test_expr.py::test_err[1/0] - NotImplementedError
+22 failed in 0.03s
