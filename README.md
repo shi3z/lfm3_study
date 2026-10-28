@@ -1,3 +1,12 @@
+> **⚠️ CORRECTION (read first): all Qwen3.5-4B numbers and statements below are INVALID.**
+> After publishing I found a bug in my shim: the Qwen checkpoints I downloaded have no `generation_config.json`, so
+> `generate()` only stopped on `<|endoftext|>` (id 248044) and ran straight past the chat turn terminator `<|im_end|>`
+> (id 248046). The model then kept inventing further conversation until the 20,000-token cap. That is what looked like
+> "runaway generations" and "claimed success without editing anything" — **those were artifacts of my harness, not
+> properties of Qwen.** LFM3 checkpoints ship a correct `generation_config.json`, so the LFM3-1.7B / LFM3-Omni-2B
+> results are unaffected. The shim is fixed (it now stops on every end-of-turn token). Qwen3.5-4B and Qwen3.5-9B are
+> being re-run, together with a harder "expert" suite; this README will be updated with the corrected results.
+
 # lfm3_study — can a ~2B LFM3 model drive Claude Code?
 
 A small, honest smoke test: run **Claude Code** with a locally served small model as its backend and see whether the
